@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dinesh M | Personal Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+    body{background:#020617;color:#e5e7eb;display:flex;min-height:100vh}
+
+    /* Sidebar */
+    .sidebar{
+      width:260px;
+      background:#020617;
+      border-right:1px solid #1f2933;
+      padding:25px 20px;
+    }
+    .sidebar h2{color:#38bdf8;margin-bottom:30px}
+    .menu button{
+      width:100%;
+      background:none;
+      border:none;
+      color:#9ca3af;
+      padding:14px 12px;
+      text-align:left;
+      font-size:1rem;
+      cursor:pointer;
+      border-radius:10px;
+      transition:.3s;
+    }
+    .menu button:hover,.menu button.active{background:#111827;color:#38bdf8}
+
+    /* Main content */
+    .content{flex:1;padding:40px 60px;overflow-y:auto}
+    .section{display:none;animation:fade .4s ease}
+    .section.active{display:block}
+
+    @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+
+    .card{background:#111827;padding:25px;border-radius:18px;margin-bottom:20px}
+    h1{margin-bottom:15px}
+    p{color:#9ca3af;line-height:1.7}
+
+    /* Skills */
+    .skill{margin:18px 0}
+    .bar{height:8px;background:#1f2933;border-radius:10px;overflow:hidden}
+    .bar span{display:block;height:100%;background:#38bdf8;width:0}
+
+    /* Clickable cards */
+    .clickable{cursor:pointer;transition:.3s}
+    .clickable:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(56,189,248,.3)}
+
+    /* Responsive */
+    @media(max-width:768px){
+      body{flex-direction:column}
+      .sidebar{width:100%;border-right:none;border-bottom:1px solid #1f2933}
+      .menu{display:flex;gap:10px;overflow-x:auto}
+      .menu button{text-align:center;white-space:nowrap}
+      .content{padding:25px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>Dinesh M</h2>
+  <div class="menu">
+    <button class="active" onclick="showSection('home')">Home</button>
+    <button onclick="showSection('about')">About</button>
+    <button onclick="showSection('education')">Education</button>
+    <button onclick="showSection('skills')">Skills</button>
+    <button onclick="showSection('projects')">Project Ideas</button>
+    <button onclick="showSection('contact')">Contact</button>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- Home -->
+  <div id="home" class="section active">
+    <h1>Hi, I'm <span style="color:#38bdf8">Dinesh M</span></h1>
+    <p>Aspiring Software Developer | Artificial Intelligence & Data Science</p>
+    <div class="card">
+      <p>B.Tech student at Bannari Amman Institute of Technology with interest in software development, AI, and data-driven solutions.</p>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div id="about" class="section">
+    <h1>About Me</h1>
+    <div class="card">
+      <p>I am a hardworking and motivated student specializing in Artificial Intelligence and Data Science. I enjoy learning new technologies, building projects, and applying my skills to solve real-world problems.</p>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div id="education" class="section">
+    <h1>Education</h1>
+    <div class="card">
+      <h3>B.Tech – AI & Data Science</h3>
+      <p>Bannari Amman Institute of Technology</p>
+      <p>CGPA: 7.11 (Current)</p>
+    </div>
+    <div class="card">
+      <p>HSC – 85% | SSLC – 78%</p>
+      <p>Dharmapuri, Tamil Nadu</p>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div id="skills" class="section">
+    <h1>Technical Skills</h1>
+    <div class="card skill"><p>C</p><div class="bar"><span data-width="80%"></span></div></div>
+    <div class="card skill"><p>C++</p><div class="bar"><span data-width="70%"></span></div></div>
+    <div class="card skill"><p>Python (Beginner)</p><div class="bar"><span data-width="50%"></span></div></div>
+    <div class="card skill"><p>HTML & CSS</p><div class="bar"><span data-width="75%"></span></div></div>
+    <div class="card skill"><p>PHP</p><div class="bar"><span data-width="55%"></span></div></div>
+    <div class="card skill"><p>MySQL</p><div class="bar"><span data-width="60%"></span></div></div>
+  </div>
+
+  <!-- Projects -->
+  <div id="projects" class="section">
+    <h1>Project Ideas</h1>
+    <div class="card clickable" onclick="openLink('https://github.com/dineshm2005')">
+      <h3>AI Heart Beat Monitoring App</h3>
+      <p>Android application using AI concepts to monitor heart rate.</p>
+      <p style="color:#38bdf8">Tap to view →</p>
+    </div>
+    <div class="card clickable" onclick="openLink('https://github.com/dineshm2005')">
+      <h3>Student Tracking System</h3>
+      <p>Microchip-based ID card system to track student growth.</p>
+      <p style="color:#38bdf8">Tap to view →</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact" class="section">
+    <h1>Contact</h1>
+    <div class="card">
+      <p>📧 dineshm.ad24@bitsathy.ac.in</p>
+      <p>📞 +91 86107 86147</p>
+      <p>🔗 LinkedIn & GitHub</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showSection(id){
+    document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.menu button').forEach(btn=>btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    if(id==='skills'){
+      document.querySelectorAll('.bar span').forEach(bar=>{
+        bar.style.width=bar.dataset.width;
+      });
+    }
+  }
+  function openLink(url){window.open(url,'_blank')}
+</script>
+
+</body>
+</html>
